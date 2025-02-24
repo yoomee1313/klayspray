@@ -50,3 +50,4 @@ resource "google_compute_address" "this" {
 
   name = format("%s-ip", var.name)
 }
+
