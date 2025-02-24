@@ -1,33 +1,40 @@
-project    = "klayspray"
-project_id = "klayspray-123456"
-gcp_region = "asia-northeast3"
+project    = "klayspray-yumiel-test"
+project_id = "klaytn-platform-dev"
+gcp_region = "asia-southeast1"
+network    = "platform-dev-vpc"
+subnetwork = "platform-dev-public-sg-subnet"
+network_tags = ["ssh", "klaytn-metrics", "klaytn-rpc", "load-test", "grafana"]
+create_gcp_key_pair = false
 
-name           = "klayspray"
+name           = "klayspray-yumiel-test"
 ssh_client_ips = ["0.0.0.0/0"]
 
+image_family = "centos-stream-9"  # Change to CentOS Stream 9 image family
+image_project = "centos-cloud"  # Set the image project to centos-cloud
+
 cn_options = {
-  count          = 4
+  count          = 1
   machine_type   = "e2-medium"
-  boot_disk_size = 30
+  # boot_disk_size = 30
   # compute_disk_size = 100
 }
 
 pn_options = {
-  count          = 4
+  count          = 1
   machine_type   = "e2-medium"
-  boot_disk_size = 30
+  # boot_disk_size = 30
   # compute_disk_size = 100
 }
 
 en_options = {
   count          = 1
   machine_type   = "e2-medium"
-  boot_disk_size = 30
+  # boot_disk_size = 30
   # compute_disk_size = 100
 }
 
 monitor_options = {
   machine_type   = "e2-medium"
-  boot_disk_size = 30
+  # boot_disk_size = 30
   # compute_disk_size = 100
 }

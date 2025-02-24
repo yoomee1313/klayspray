@@ -113,7 +113,7 @@ module "monitor" {
   #   size = 100
   # }
 
-  tags = ["klayspray", "monitor"]
+  tags = length(var.network_tags) > 0 ? var.network_tags : ["klayspray", "monitor"]
 
   metadata = merge(var.metadata, {
     Name = format("%s-monitor", var.name)

@@ -46,9 +46,9 @@ variable "ssh_client_ips" {
 }
 
 variable "create_gcp_key_pair" {
+  description = "Flag to determine whether to create a GCP SSH key pair."
   type        = bool
-  description = "Flag to create gcp key pair or not "
-  default     = true
+  default     = false  # Default to false; set to true to create the key pair
 }
 
 variable "project" {
@@ -67,4 +67,32 @@ variable "gcp_region" {
   type        = string
   description = "GCP region where all resources will be created"
   default     = "asia-northeast3"
+}
+
+variable "network" {
+  type        = string
+  description = "Network Name to be used"
+  default     = ""
+}
+
+variable "subnetwork" {
+  type        = string
+  description = "Subnet Name to be used"
+  default     = ""
+}
+
+variable "network_tags" {
+  description = "List of network tags to apply to the VPC."
+  type        = list(string)
+  default     = []
+}
+
+variable "image_family" {
+  description = "The image family for the boot disk"
+  type        = string
+}
+
+variable "image_project" {
+  description = "The project containing the image"
+  type        = string
 }

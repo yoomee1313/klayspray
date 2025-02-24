@@ -1,4 +1,8 @@
 # Deploy Private Layer1 Network on GCP
+### 0. Prerequisites
+```bash
+gcloud auth application-default login
+```
 
 ### 1. Deploy GCP resources
 > :warning: Before running the following commands, please get GCP credentials using command below.

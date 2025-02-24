@@ -3,9 +3,10 @@ module "layer1" {
 
   name       = local.name
   zone_list  = data.google_compute_zones.this.names
-  network    = module.vpc.network_self_link
-  subnetwork = one([for item in module.vpc.subnets_self_links : item if can(regex("public", item))])
+  network    = local.network_self_link
+  subnetwork = local.subnetwork_self_link
   project_id = var.project_id
+  network_tags = var.network_tags
 
   boot_image_id  = data.google_compute_image.this.self_link
   ssh_client_ips = var.ssh_client_ips
@@ -18,6 +19,6 @@ module "layer1" {
   metadata = merge(
     var.metadata,
     local.default_metadata,
-    { ssh-keys = format("klay:%s klay", trimspace(module.keypair.ssh_public_key)) }
+    var.create_gcp_key_pair ? { ssh-keys = format("klay:%s klay", trimspace(module.keypair.ssh_public_key)) } : {}
   )
 }
