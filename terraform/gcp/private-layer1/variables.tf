@@ -97,3 +97,9 @@ variable "network_tags" {
   type        = list(string)
   default     = []
 }
+
+variable "user_name" {
+  description = "User name to be used for SSH login"
+  type        = string
+  default     = "kaia"
+}
